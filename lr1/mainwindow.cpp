@@ -10,8 +10,8 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
     pw = new qpaintwidget(this->ui->canvaswidget);
-
-    //ui->verticalLayout->addWidget(wgt);
+//    pw->drawImage();
+//    ui->verticalLayout->addWidget(wgt);
 }
 
 

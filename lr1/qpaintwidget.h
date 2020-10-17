@@ -8,9 +8,11 @@ class qpaintwidget : public QWidget
     Q_OBJECT
 public:
     explicit qpaintwidget(QWidget *parent = nullptr);
+//    void drawImage();
 
 protected:
     void paintEvent(QPaintEvent*);
+
 
 };
 

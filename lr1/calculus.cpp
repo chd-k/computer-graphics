@@ -3,6 +3,8 @@
 
 #include <cmath>
 
+//FIXME: ВЫНЕСТИ ОПЕРАЦИИ В ОТДЕЛЬНЫЕ МЕТОДЫ
+
 using namespace arma;
 
 calculus::calculus(float X1, float Y1, float R1, float X2, float Y2, float R2)
@@ -49,11 +51,11 @@ calculus::calculus(float X1, float Y1, float R1, float X2, float Y2, float R2)
 //    координаты отрезка "повёрнутая точка - центр окружности 2"
     mat m0 = {{tmp2(0, 0), tmp2(0, 1), 1},
           {(double)x2, (double)y2, 1}};
-    mat mres = m0 * mrtransfer;
-    xt1 = mres(0, 0) / mres(0, 2);
-    xt2 = mres(1, 0) / mres(1, 2);
-    yt1 = mres(0, 1) / mres(0, 2);
-    yt2 = mres(1, 1) / mres(1, 2);
+//    mat mres = m0 * mrtransfer;
+//    xt1 = mres(0, 0) / mres(0, 2);
+//    xt2 = mres(1, 0) / mres(1, 2);
+//    yt1 = mres(0, 1) / mres(0, 2);
+//    yt2 = mres(1, 1) / mres(1, 2);
 //    xt1 = tmp2(0, 0);
 //    xt2 = x2;
 //    yt1 = tmp2(0, 1);
@@ -62,5 +64,24 @@ calculus::calculus(float X1, float Y1, float R1, float X2, float Y2, float R2)
 //    xt2 = x02;
 //    yt1 = y01;
 //    yt2 = y02;
+}
+
+float calculus::pointsOfTangency()
+{
+    float dx = - x1 + x2;
+    float dy = - y1 + y2;
+    float dxy = sqrt(pow(dx, 2) + pow(dy, 2));
+    float R = (r1 + r2) / dxy;
+//    угол между касательной и отрезком, соединяющим центры окружностей
+    float theta = acos(R) * 180.0 / M_PI;
+//    вычисление точек касания
+    x01 = x1 + R * r1 * (dx / dxy) + sqrt(1 - pow(R, 2)) * r1 * (dy / dxy);
+    y01 = y1 + R * r1 * (dy / dxy) + sqrt(1 - pow(R, 2)) * r1 * ( - dx / dxy);
+    x02 = x2 - R * r2 * (dx / dxy) - sqrt(1 - pow(R, 2)) * r2 * (dy / dxy);
+    y02 = y2 - R * r2 * (dy / dxy) - sqrt(1 - pow(R, 2)) * r2 * ( - dx / dxy);
+//    x02 = x2 + r2 * cos((theta) * M_PI / 180);
+//    y02 = y2 + r2 * sin((theta) * M_PI / 180);
+//    x01 = x1 + r1 * cos((theta) * M_PI / 180);
+//    y01 = y1 + r1 * sin((theta) * M_PI / 180);
 }
 
