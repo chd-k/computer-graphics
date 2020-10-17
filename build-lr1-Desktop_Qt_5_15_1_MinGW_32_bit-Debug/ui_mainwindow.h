@@ -22,6 +22,7 @@ class Ui_MainWindow
 {
 public:
     QWidget *centralwidget;
+    QWidget *canvaswidget;
     QMenuBar *menubar;
     QStatusBar *statusbar;
 
@@ -32,9 +33,13 @@ public:
         MainWindow->resize(800, 600);
         centralwidget = new QWidget(MainWindow);
         centralwidget->setObjectName(QString::fromUtf8("centralwidget"));
+        canvaswidget = new QWidget(centralwidget);
+        canvaswidget->setObjectName(QString::fromUtf8("canvaswidget"));
+        canvaswidget->setGeometry(QRect(10, 20, 391, 521));
         MainWindow->setCentralWidget(centralwidget);
         menubar = new QMenuBar(MainWindow);
         menubar->setObjectName(QString::fromUtf8("menubar"));
+        menubar->setGeometry(QRect(0, 0, 800, 26));
         MainWindow->setMenuBar(menubar);
         statusbar = new QStatusBar(MainWindow);
         statusbar->setObjectName(QString::fromUtf8("statusbar"));
