@@ -24,3 +24,18 @@ MainWindow::~MainWindow()
 
 
 
+
+void MainWindow::on_enter_clicked()
+{
+//    if (pw == nullptr)
+//        pw = new qpaintwidget(this->ui->canvaswidget);
+//    else
+//        pw->update();
+    pw->x1 = ui->linex1->text().toFloat();
+    pw->x2 = ui->linex2->text().toFloat();
+    pw->y1 = ui->liney1->text().toFloat();
+    pw->y2 = ui->liney2->text().toFloat();
+    pw->r1 = ui->liner1->text().toFloat();
+    pw->r2 = ui->liner2->text().toFloat();
+    pw->update();
+}
